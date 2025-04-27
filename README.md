@@ -63,11 +63,8 @@ Separate datasets were created for weekdays and the weekend.
 
 ## Network dynamics during weekdays
 
-    /tmp/ipykernel_1654623/1974624293.py:21: UserWarning:
+![](readme_files/figure-commonmark/cell-4-output-1.png)
 
-    set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+## Network dynamics during weekends
 
-    Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
-    Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-
-![](readme_files/figure-commonmark/cell-4-output-2.png)
+![](readme_files/figure-commonmark/cell-6-output-1.png)
