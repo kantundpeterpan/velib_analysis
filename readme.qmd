@@ -85,45 +85,51 @@ stations_clusters_with_info_df = geopandas.GeoDataFrame(
 
 ```{python}
 n_clusters = cluster_profiles_df.shape[0] # Get n_clusters from the loaded data
-
+fontsize = 16 # Adjust as necessary to keep relative size between elements
 # Create a gridspec layout
 fig = plt.figure(figsize=(15, 20))
 gs = gridspec.GridSpec(8, 2) # 8 rows, 2 columns
 # Panel 1: Elbow Method (Span 2x1)
 ax1 = plt.subplot(gs[0:2, 0])  # Span rows 0 and 1, column 0
 ax1.plot(wcss_df['n_clusters'], wcss_df['wcss'])
-ax1.set_title('Elbow Method')
-ax1.set_xlabel('Number of clusters')
-ax1.set_ylabel('WCSS')
+ax1.set_title('Elbow Method', fontsize=fontsize)
+ax1.set_xlabel('Number of clusters', fontsize=fontsize)
+ax1.set_ylabel('WCSS', fontsize=fontsize)
+ax1.tick_params(axis='both', which='major', labelsize=fontsize-2)
+ax1.tick_params(axis='both', which='minor', labelsize=fontsize-2)
 
 # Panel 2: Cluster Profiles (Span 2x1)
 ax2 = plt.subplot(gs[0:2, 1])  # Span rows 0 and 1, column 1
 palette = sns.color_palette("hls", n_clusters)
 for i in range(n_clusters):
     ax2.plot(cluster_profiles_df.iloc[i], label=f'Cluster {i+1}', color=palette[i])
-ax2.set_title('Cluster Profiles (Average Availability per Hour)')
-ax2.set_xlabel('Hour')
-ax2.set_ylabel('Average Relative Availability')
-ax2.set_xticklabels(range(24))
-ax2.legend()
+ax2.set_title('Cluster Profiles (Average Availability per Hour)', fontsize=fontsize)
+ax2.set_xlabel('Hour', fontsize=fontsize)
+ax2.set_ylabel('Average Relative Availability', fontsize=fontsize)
+ax2.set_xticklabels(range(24), fontsize=fontsize-2)
+ax2.tick_params(axis='y', which='major', labelsize=fontsize-2)
+
+ax2.legend(fontsize=fontsize-4)
 ax2.grid(True)
 
 # Panel 3: Cluster Sizes (Span 2x1)
 ax3 = plt.subplot(gs[2:4, 0])  # Span rows 2 and 3, column 0
 cluster_sizes_df.plot(kind='bar', ax=ax3, legend=False)
-ax3.set_title('Cluster Sizes')
-ax3.set_xlabel('Cluster')
-ax3.set_ylabel('Number of Stations')
+ax3.set_title('Cluster Sizes', fontsize=fontsize)
+ax3.set_xlabel('Cluster', fontsize=fontsize)
+ax3.set_ylabel('Number of Stations', fontsize=fontsize)
+ax3.tick_params(axis='both', which='major', labelsize=fontsize-2)
+ax3.tick_params(axis='both', which='minor', labelsize=fontsize-2)
+
 
 # Panel 4: Cluster Heatmap (Span 2x1)
 ax4 = plt.subplot(gs[2:4, 1])  # Span rows 2 and 3, column 1
 sns.heatmap(cluster_profiles_df, cmap="YlGnBu", ax=ax4)
-ax4.set_title("Heatmap of Average Availability by Cluster")
-ax4.set_xlabel('Hour')
-ax4.set_ylabel("Cluster")
-ax4.set_xticklabels(range(24))
-# ax4.set_yticks(rotation=0)
-
+ax4.set_title("Heatmap of Average Availability by Cluster", fontsize=fontsize)
+ax4.set_xlabel('Hour', fontsize=fontsize)
+ax4.set_ylabel("Cluster", fontsize=fontsize)
+ax4.set_xticklabels(range(24), fontsize=fontsize-2)
+ax4.set_yticklabels(ax4.get_yticklabels(), fontsize=fontsize-2, rotation=0)
 # Panel 5: Geographic Distribution of Clusters (Span 4x4)
 ax5 = plt.subplot(gs[4:8, :])  # Span rows 4, 5, 6 and 7, and both columns
 # sns.scatterplot(
@@ -141,9 +147,9 @@ cluster_colors = {i: color for i, color in enumerate(sns.color_palette("hls", n_
 
 # Then, plot using the map
 gdf_webmercator.plot(ax=ax5, c=gdf_webmercator['cluster'].subtract(1).map(cluster_colors))
-ax5.set_title('Geographic Distribution of Clusters')
-ax5.set_xlabel('Longitude')
-ax5.set_ylabel('Latitude')
+ax5.set_title('Geographic Distribution of Clusters', fontsize=fontsize)
+ax5.set_xlabel('Longitude', fontsize=fontsize)
+ax5.set_ylabel('Latitude', fontsize=fontsize)
 ax5.set_aspect('equal', adjustable='datalim') # Keep aspect ratio for map
 ctx.add_basemap(ax5, crs =gdf_webmercator.crs.to_string(), source=ctx.providers.CartoDB.Positron)
 ax5.set_xticks([])
@@ -157,7 +163,6 @@ ax5.set_ylabel('')
 plt.tight_layout()  # Adjust layout to prevent overlapping subplots
 
 ```
-
 ## Network dynamics during weekends
 
 ```{python}
@@ -177,45 +182,51 @@ stations_clusters_with_info_df = geopandas.GeoDataFrame(
 
 ```{python}
 n_clusters = cluster_profiles_df.shape[0] # Get n_clusters from the loaded data
-
+fontsize = 16 # Adjust as necessary to keep relative size between elements
 # Create a gridspec layout
 fig = plt.figure(figsize=(15, 20))
 gs = gridspec.GridSpec(8, 2) # 8 rows, 2 columns
 # Panel 1: Elbow Method (Span 2x1)
 ax1 = plt.subplot(gs[0:2, 0])  # Span rows 0 and 1, column 0
 ax1.plot(wcss_df['n_clusters'], wcss_df['wcss'])
-ax1.set_title('Elbow Method')
-ax1.set_xlabel('Number of clusters')
-ax1.set_ylabel('WCSS')
+ax1.set_title('Elbow Method', fontsize=fontsize)
+ax1.set_xlabel('Number of clusters', fontsize=fontsize)
+ax1.set_ylabel('WCSS', fontsize=fontsize)
+ax1.tick_params(axis='both', which='major', labelsize=fontsize-2)
+ax1.tick_params(axis='both', which='minor', labelsize=fontsize-2)
 
 # Panel 2: Cluster Profiles (Span 2x1)
 ax2 = plt.subplot(gs[0:2, 1])  # Span rows 0 and 1, column 1
 palette = sns.color_palette("hls", n_clusters)
 for i in range(n_clusters):
     ax2.plot(cluster_profiles_df.iloc[i], label=f'Cluster {i+1}', color=palette[i])
-ax2.set_title('Cluster Profiles (Average Availability per Hour)')
-ax2.set_xlabel('Hour')
-ax2.set_ylabel('Average Relative Availability')
-ax2.set_xticklabels(range(24))
-ax2.legend()
+ax2.set_title('Cluster Profiles (Average Availability per Hour)', fontsize=fontsize)
+ax2.set_xlabel('Hour', fontsize=fontsize)
+ax2.set_ylabel('Average Relative Availability', fontsize=fontsize)
+ax2.set_xticklabels(range(24), fontsize=fontsize-2)
+ax2.tick_params(axis='y', which='major', labelsize=fontsize-2)
+
+ax2.legend(fontsize=fontsize-4)
 ax2.grid(True)
 
 # Panel 3: Cluster Sizes (Span 2x1)
 ax3 = plt.subplot(gs[2:4, 0])  # Span rows 2 and 3, column 0
 cluster_sizes_df.plot(kind='bar', ax=ax3, legend=False)
-ax3.set_title('Cluster Sizes')
-ax3.set_xlabel('Cluster')
-ax3.set_ylabel('Number of Stations')
+ax3.set_title('Cluster Sizes', fontsize=fontsize)
+ax3.set_xlabel('Cluster', fontsize=fontsize)
+ax3.set_ylabel('Number of Stations', fontsize=fontsize)
+ax3.tick_params(axis='both', which='major', labelsize=fontsize-2)
+ax3.tick_params(axis='both', which='minor', labelsize=fontsize-2)
+
 
 # Panel 4: Cluster Heatmap (Span 2x1)
 ax4 = plt.subplot(gs[2:4, 1])  # Span rows 2 and 3, column 1
 sns.heatmap(cluster_profiles_df, cmap="YlGnBu", ax=ax4)
-ax4.set_title("Heatmap of Average Availability by Cluster")
-ax4.set_xlabel('Hour')
-ax4.set_ylabel("Cluster")
-ax4.set_xticklabels(range(24))
-# ax4.set_yticks(rotation=0)
-
+ax4.set_title("Heatmap of Average Availability by Cluster", fontsize=fontsize)
+ax4.set_xlabel('Hour', fontsize=fontsize)
+ax4.set_ylabel("Cluster", fontsize=fontsize)
+ax4.set_xticklabels(range(24), fontsize=fontsize-2)
+ax4.set_yticklabels(ax4.get_yticklabels(), fontsize=fontsize-2, rotation=0)
 # Panel 5: Geographic Distribution of Clusters (Span 4x4)
 ax5 = plt.subplot(gs[4:8, :])  # Span rows 4, 5, 6 and 7, and both columns
 # sns.scatterplot(
@@ -233,9 +244,9 @@ cluster_colors = {i: color for i, color in enumerate(sns.color_palette("hls", n_
 
 # Then, plot using the map
 gdf_webmercator.plot(ax=ax5, c=gdf_webmercator['cluster'].subtract(1).map(cluster_colors))
-ax5.set_title('Geographic Distribution of Clusters')
-ax5.set_xlabel('Longitude')
-ax5.set_ylabel('Latitude')
+ax5.set_title('Geographic Distribution of Clusters', fontsize=fontsize)
+ax5.set_xlabel('Longitude', fontsize=fontsize)
+ax5.set_ylabel('Latitude', fontsize=fontsize)
 ax5.set_aspect('equal', adjustable='datalim') # Keep aspect ratio for map
 ctx.add_basemap(ax5, crs =gdf_webmercator.crs.to_string(), source=ctx.providers.CartoDB.Positron)
 ax5.set_xticks([])
