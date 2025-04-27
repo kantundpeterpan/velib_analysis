@@ -1,0 +1,13 @@
+files:
+  aws: "./.creds/key.json"
+  gc_creds: "./.creds/gbfsbikes-b740cce6905f.json"
+
+aws:
+  aws_access_key_id: DESTINATION__ATHENA__CREDENTIALS__AWS_ACCESS_KEY_ID
+  aws_secret_access_key: DESTINATION__ATHENA__CREDENTIALS__AWS_SECRET_ACCESS_KEY
+
+gc_creds:
+  location: DESTINATION__BIGQUERY__LOCATION
+  project_id: "DESTINATION__BIGQUERY__CREDENTIALS__PROJECT_ID"
+  private_key: "DESTINATION__BIGQUERY__CREDENTIALS__PRIVATE_KEY"
+  client_email: "DESTINATION__BIGQUERY__CREDENTIALS__CLIENT_EMAIL"

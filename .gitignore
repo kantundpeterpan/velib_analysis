@@ -1,9 +1,13 @@
 # keys
 .aws_creds/
+.creds/ 
 
 *.zip
 *.pkl
 archive/
+.continue
+readme_files/
+velib.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

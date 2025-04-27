@@ -1,0 +1,15 @@
+sources:
+  - name: paris
+    database: awsdatacatalog
+    schema: paris
+    tables:
+      - name: historical_data
+      - name: historcial_stations
+      - name: station_info
+
+models:
+  - name: bike_abs_avail_weekdays
+  - name: bike_rel_avail_weekdays
+  - name: bike_abs_avail_weekend
+  - name: bike_rel_avail_weekend
+  

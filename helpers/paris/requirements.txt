@@ -1,0 +1,1 @@
+dlt[athena,sql-database]>=1.10.0

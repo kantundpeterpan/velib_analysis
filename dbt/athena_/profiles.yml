@@ -1,0 +1,11 @@
+athena_:
+  outputs:
+    dev:
+      database: awsdatacatalog
+      region_name: eu-central-1
+      s3_data_dir: ' s3://gbfsbickesbucket/paris'
+      s3_staging_dir: s3://gbfsbikesbucket/athena_results/dbt
+      schema: paris
+      threads: 8
+      type: athena
+  target: dev
