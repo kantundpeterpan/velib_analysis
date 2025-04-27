@@ -63,8 +63,78 @@ Separate datasets were created for weekdays and the weekend.
 
 ## Network dynamics during weekdays
 
+### Code
+
 ![](readme_files/figure-commonmark/cell-4-output-1.png)
+
+### Interpretation
+
+The number of clusters was identified using the elbow method, there is
+no clearcut results, but a choice of $k=5$ seems justified as it
+provided a meaningful distinction of temporal patterns and geographic
+concentrations that align with expected urban mobility behaviors,
+offering a coherent basis for analysis.
+
+Given the five clusters, temporal analysis of the hourly mean relative
+occupancy over the course of a typical working day shows interesting
+dynamics.
+
+Cluster no. 1 is the biggest cluster with about 500 stations
+(corresponding to about 30% of all stations in the network). Its mean
+occupancy goes never beyond 30% and is very low (\<20%) during working
+hours (8am to 20pm). The stations belonging to cluster 1, are mainly
+situated in the outer ring of the Parisian arrondissements on the Rive
+droite of the river Seine (Arr. 17, 18, 19, 20) and in the 13th and 14th
+arrondissement on the Rive Gauche.
+
+The mean occupancy in cluster 2 is quite stable between 60-70%
+throughout the day. Stations assigned to cluster 2 are concentrated in
+two regions of Paris: 1) In the eastern part of the inner circle of
+arrondissements (3rd, 4th, 5th) and 2) In the outer south-western part,
+around and south of the Eiffel tower which might indicate
+
+The remaining clusters 3, 4, and 5 exhibit anti-correlated periodic
+patterns with pronounced changes in occupancy during communting hours
+(6-9am and 4-6pm). Stations in the 6th, 7th, and 8th arrondissement
+(cluster 4) are lowly occupied in the morning and experience a large
+increase in occupancy, consistent with commuter influx from clusters 3
+and 5.
+
+One has to keep in mind, that only net fluxes can be observed in this
+dataset, *i.e.* the flux path cannot be inferred from these data meaning
+outflows from clusters 3 and 5 in the morning might directly go into
+cluster 4 while a flux equilibrium between clusters 3,5,2 and 4 an
+equally good explanation for the observed pattern.
+
+Keeping this in mind, the observed net flow patterns are still
+informative as to whether specific stations or clusters of stations
+exhibit certain characteristics and guide network operations:
+
+Stations or clusters that show a significant decrease in available bikes
+during morning peak hours, suggest a high volume of net rentals typical
+of commuter activity while stations or clusters that exhibit a strong
+increase in available bikes during evening hours, indicate a net inflow
+of bikes (more returns than rentals), potentially from users returning
+bikes after work or leisure.
+
+Stations with consistent net decrease during peak usage times are
+candidates for having bikes sent during proactive rebalancing while
+bikes might need to be removed from stations that saturate.
 
 ## Network dynamics during weekends
 
+### Code
+
 ![](readme_files/figure-commonmark/cell-6-output-1.png)
+
+### Interpretation
+
+<!-- # Outlook
+&#10;## Occupancy analysis
+- per district/city
+- correlation with sociodemographic indicators (salary, age, level of education, total population)
+- correlation with station elevation
+- stratified analysis mechanical/ebikes
+&#10;
+## Network structure analysis (solely based on stations)
+&#10;- theoretical capacity -->

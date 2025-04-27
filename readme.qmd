@@ -246,7 +246,7 @@ ax3.tick_params(axis='both', which='minor', labelsize=fontsize-2)
 
 # Panel 4: Cluster Heatmap (Span 2x1)
 ax4 = plt.subplot(gs[2:4, 1])  # Span rows 2 and 3, column 1
-sns.heatmap(cluster_profiles_df), cmap="YlGnBu", ax=ax4)
+sns.heatmap(cluster_profiles_df, cmap="YlGnBu", ax=ax4)
 ax4.set_title("Heatmap of Average Availability by Cluster", fontsize=fontsize)
 ax4.set_xlabel('Hour', fontsize=fontsize)
 ax4.set_ylabel("Cluster", fontsize=fontsize)
