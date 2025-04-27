@@ -6,6 +6,8 @@ format:
   gfm:
     output-file: "README"
     output-ext: md
+execute: 
+  echo: false
 ---
 
 
