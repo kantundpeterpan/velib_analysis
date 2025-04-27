@@ -83,6 +83,8 @@ stations_clusters_with_info_df = geopandas.GeoDataFrame(
 # stations_clusters_with_info_df.set_crs(2154)
 ```
 
+### Code
+
 ```{python}
 n_clusters = cluster_profiles_df.shape[0] # Get n_clusters from the loaded data
 fontsize = 16 # Adjust as necessary to keep relative size between elements
@@ -114,7 +116,7 @@ ax2.grid(True)
 
 # Panel 3: Cluster Sizes (Span 2x1)
 ax3 = plt.subplot(gs[2:4, 0])  # Span rows 2 and 3, column 0
-cluster_sizes_df.plot(kind='bar', ax=ax3, legend=False)
+cluster_sizes_df.sort_index().plot(kind='bar', ax=ax3, legend=False)
 ax3.set_title('Cluster Sizes', fontsize=fontsize)
 ax3.set_xlabel('Cluster', fontsize=fontsize)
 ax3.set_ylabel('Number of Stations', fontsize=fontsize)
@@ -163,7 +165,30 @@ ax5.set_ylabel('')
 plt.tight_layout()  # Adjust layout to prevent overlapping subplots
 
 ```
+
+### Interpretation
+
+The number of clusters was identified using the elbow method, there is no clearcut results, but a choice of $k=5$ seems justified as it provided a meaningful distinction of temporal patterns and geographic concentrations that align with expected urban mobility behaviors, offering a coherent basis for analysis.
+
+Given the five clusters, temporal analysis of the hourly mean relative occupancy over the course of a typical working day shows interesting dynamics. 
+
+Cluster no. 1 is the biggest cluster with about 500 stations (corresponding to about 30% of all stations in the network). Its mean occupancy goes never beyond 30% and is very low (<20%) during working hours (8am to 20pm). The stations belonging to cluster 1, are mainly situated in the outer ring of the Parisian arrondissements on the Rive droite of the river Seine (Arr. 17, 18, 19, 20) and in the 13th and 14th arrondissement on the Rive Gauche.
+
+The mean occupancy in cluster 2 is quite stable between 60-70% throughout the day. Stations assigned to cluster 2 are concentrated in two regions of Paris: 1) In the eastern part of the inner circle of arrondissements (3rd, 4th, 5th) and 2) In the outer south-western part, around and south of the Eiffel tower which might indicate 
+
+The remaining clusters 3, 4, and 5 exhibit anti-correlated periodic patterns with pronounced changes in occupancy during communting hours (6-9am and 4-6pm). Stations in the 6th, 7th, and 8th arrondissement (cluster 4) are lowly occupied in the morning and experience a large increase in occupancy, consistent with commuter influx from clusters 3 and 5. 
+
+One has to keep in mind, that only net fluxes can be observed in this dataset, *i.e.* the flux path cannot be inferred from these data meaning outflows from clusters 3 and 5 in the morning might directly go into cluster 4 while a flux equilibrium between clusters 3,5,2 and 4 an equally good explanation for the observed pattern. 
+
+Keeping this in mind, the observed net flow patterns are still informative as to whether specific stations or clusters of stations exhibit certain characteristics and guide network operations: 
+
+Stations or clusters that show a significant decrease in available bikes during morning peak hours, suggest a high volume of net rentals typical of commuter activity while stations or clusters that exhibit a strong increase in available bikes during evening hours, indicate a net inflow of bikes (more returns than rentals), potentially from users returning bikes after work or leisure.
+
+Stations with consistent net decrease during peak usage times are candidates for having bikes sent during proactive rebalancing while bikes might need to be removed from stations that saturate.
+
 ## Network dynamics during weekends
+
+### Code
 
 ```{python}
 
@@ -211,7 +236,7 @@ ax2.grid(True)
 
 # Panel 3: Cluster Sizes (Span 2x1)
 ax3 = plt.subplot(gs[2:4, 0])  # Span rows 2 and 3, column 0
-cluster_sizes_df.plot(kind='bar', ax=ax3, legend=False)
+cluster_sizes_df.sort_index().plot(kind='bar', ax=ax3, legend=False)
 ax3.set_title('Cluster Sizes', fontsize=fontsize)
 ax3.set_xlabel('Cluster', fontsize=fontsize)
 ax3.set_ylabel('Number of Stations', fontsize=fontsize)
@@ -221,7 +246,7 @@ ax3.tick_params(axis='both', which='minor', labelsize=fontsize-2)
 
 # Panel 4: Cluster Heatmap (Span 2x1)
 ax4 = plt.subplot(gs[2:4, 1])  # Span rows 2 and 3, column 1
-sns.heatmap(cluster_profiles_df, cmap="YlGnBu", ax=ax4)
+sns.heatmap(cluster_profiles_df), cmap="YlGnBu", ax=ax4)
 ax4.set_title("Heatmap of Average Availability by Cluster", fontsize=fontsize)
 ax4.set_xlabel('Hour', fontsize=fontsize)
 ax4.set_ylabel("Cluster", fontsize=fontsize)
@@ -260,3 +285,18 @@ ax5.set_ylabel('')
 plt.tight_layout()  # Adjust layout to prevent overlapping subplots
 
 ```
+
+### Interpretation
+
+<!-- # Outlook
+
+## Occupancy analysis
+- per district/city
+- correlation with sociodemographic indicators (salary, age, level of education, total population)
+- correlation with station elevation
+- stratified analysis mechanical/ebikes
+
+
+## Network structure analysis (solely based on stations)
+
+- theoretical capacity -->
