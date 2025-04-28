@@ -43,6 +43,16 @@ clusters = kmeans.fit_predict(station_id_vs_hour)+1
 # Add cluster labels to the station_id_vs_hour dataframe
 station_id_vs_hour['cluster'] = clusters
 
+# change cluster labels to be coherent with textual analysis and cluster from weekdays
+cluster_map = {
+    1:3,
+    2:1,
+    3:2,
+    4:4,
+    5:5
+}
+station_id_vs_hour['cluster'] = station_id_vs_hour.cluster.map(cluster_map)
+
 # Save station_id_vs_hour with cluster assignments to a CSV file
 station_id_vs_hour.to_csv('station_clusters.csv', index=True)
 

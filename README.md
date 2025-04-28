@@ -46,13 +46,19 @@ The timeseries data set contains 87 047 062 rows.
 
 ![](./img/mermaid-diagram-2025-04-27-214223.png)
 
-# Data transformation
+# Data transformation and processing
 
-Data were analysed over the complete acquisition period. For each time
-point and station the relative occupation of the station was calculated
-by dividing the number of available bikes (`num_bikes_available`) by the
-sum of available bikes and available docks (`num_docks_availabe`) ([see
-also the dbt models](./dbt/athena_/models/)).
+Data were filtered to exclude the period from 2024-07-15 to 2024-08-31
+during which the Olympic Summer games took place in Paris and which
+probably caused significant alterations in daily bike usage patterns
+both due to differences in trip profiles as reallocation strategy as
+well as setup of temporary rental stations.
+
+For each time point and station the relative occupation of the station
+was calculated by dividing the number of available bikes
+(`num_bikes_available`) by the sum of available bikes and available
+docks (`num_docks_availabe`) ([see also the dbt
+models](./dbt/athena_/models/)).
 
 The relative occupation was then averaged for each station by the hour
 of the day ([see for
@@ -104,7 +110,7 @@ One has to keep in mind, that only net fluxes can be observed in this
 dataset, *i.e.* the flux path cannot be inferred from these data meaning
 outflows from clusters 3 and 5 in the morning might directly go into
 cluster 4 while a flux equilibrium between clusters 3,5,2 and 4 an
-equally good explanation for the observed pattern.
+equally good explanation for the observed *net* pattern.
 
 Keeping this in mind, the observed net flow patterns are still
 informative as to whether specific stations or clusters of stations
@@ -129,12 +135,59 @@ bikes might need to be removed from stations that saturate.
 
 ### Interpretation
 
+The elbow plot for the weekend data indicates that an analysis using
+only two clusters might be warranted. However, in order to facilitate
+direct comparison to the weekday analysis, 5 clusters were retained.
+
+Additionnally, clusters found in the weekend analysis were manually
+relabeled to highlight differences in usage patterns similarities of
+spatial station distributions while usage patterns differ from weekdays.
+
+Results for clusters 1 and 2 are very similar in terms of temporal
+occupancy pattern and cluster size in comparison to weekdays. Overall,
+clusters 1, 2, 3, and 5 show intercorrelated occupancy patterns with a
+much smaller amplitude compared to weekdays, particularly noticable in
+clusters 3 and 5, indicating less extreme fluctuations in bike
+availability.
+
+As during weekdays, the pattern in found in cluster 4 is anti-correlated
+to the occupancy in the remaining clusters. Compared to weekdays, bike
+availability is higher and the change in availibility is more pronounced
+during the hours after midnight, while peak net influx is shifted to
+mid-afternoon. This could be due to users returning home after having
+spent the evening night out which is consistent with cluster 4 stations
+being located in busy downtown districts. The flatter patterns observed
+in the remaining clusters could either indicate lower user activity in
+general or a more homogenous distribution of trips over the city.
+
+# Conclusions and outlook
+
+This analysis explored temporal patterns of bike availability in the
+Parisian Velib bike sharing network. I have shown that a large part of
+the network is chronically underserved (cluster 1 in both weekday and
+weekend analyses) while another part provides stable access to bikes on
+any given day (cluster 2).
+
+These finding provide guidance for potential rebalancing efforts (more
+bikes shifted to cluster 1) and potential infrastructure improvements
+(more docks for cluster 4 alternative returning solutions).
+
+Comparing occupancy patterns stratified by weekday/weekend, revealed
+differences in the occupancy time course but less so in the spatial
+clustering of bike stations. This suggests that there might be two
+distinct states of the bike sharing system thus warranting further
+finegrained investigation, *e.g.* by day of the week and especially of
+the supposed change points - friday evening and monday morning.
+
 <!-- # Outlook
 &#10;## Occupancy analysis
 - per district/city
 - correlation with sociodemographic indicators (salary, age, level of education, total population)
 - correlation with station elevation
 - stratified analysis mechanical/ebikes
-&#10;
-## Network structure analysis (solely based on stations)
+- correlation and (lagged) crosscorrelation
+- clustering comparison metrics ari, nmi
+- banlieue vs. intramuros
+- analysis per weekday with emphasis on change points
+&#10;## Network structure analysis (solely based on stations)
 &#10;- theoretical capacity -->
