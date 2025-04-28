@@ -1,6 +1,3 @@
-# Netzwerkdynamik an Wochentagen
-
-
 # Projektübersicht: Nutzungsmsuter im Pariser Velib System
 
 Dieses Projekt analysiert die Dynamik des Pariser Velib

@@ -57,7 +57,7 @@ AWS Quicksight Dashboard, AWS Account erforderlich
 
 [![](./dashboard.png)](https://eu-central-1.quicksight.aws.amazon.com/sn/accounts/887794525971/dashboards/00415383-4ae1-440b-897c-0f054ed9df20?directory_alias=kantundpeterpan)
 
-# Results
+# Ergebnisse
 
 ```{python}
 #| echo: false
