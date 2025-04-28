@@ -11,9 +11,9 @@ execute:
 ---
 
 
-# Projektübersicht: Nutzungsmsuter im Pariser Velib System
+# Projektübersicht: Nutzungsmsuter im Pariser *Velib* System
 
-Dieses Projekt analysiert die Dynamik des Pariser Velib Bike-Sharing-Systems. Ich verwende Cluster-Analyse sowie räumliche und zeitliche Visualisierungen, um Muster im Fahrradfluss innerhalb des Netzwerks getrennt für Wochentage und Wochenenden aufzudecken. Beide Zeitperioden weisen recht unterschiedliche Dynamiken auf.
+Dieses Projekt analysiert die Dynamik des Pariser *Velib* Bike-Sharing-Systems. Ich verwende Cluster-Analyse sowie räumliche und zeitliche Visualisierungen, um Muster im Fahrradfluss innerhalb des Netzwerks getrennt für Wochentage und Wochenenden aufzudecken. Beide Zeitperioden weisen recht unterschiedliche Dynamiken auf.
 
 # Datensatz
 
@@ -298,7 +298,7 @@ Diese Analyse untersucht zeitliche Muster von Fahrradverfügbarkeit im Pariser V
 
 Diese Ergebnisse könntent als Anhaltspunkte für potenzielle Maßnahmen zur Umlagerung (mehr Fahrräder nach Cluster 1 verlagern) und potenzielle Infrastrukturverbesserungen (mehr Station in oder alternative Rückgabelösungen in Cluster 4) dienen.
 
-Der Vergleich der Auslastungsmuster aufgeschlüsselt nach Werktag / Wochendende zeigt vor allem Unterschiede im Zeitverlauf weniger in der räumlichen Konzentration von Stationen mit ähnlichem Auslastungsverlauf. Dies deutet auf zwei unterschiedliche Zustände des Fahrradleihsystems hin, denen in weiteren detaillierten Analysen nachgegangen werden könnte, inbesondere bezüglich der potenziellen WendepunkteÖ Freitagabend und Montagmorgen.
+Der Vergleich der Auslastungsmuster aufgeschlüsselt nach Werktag / Wochendende zeigt vor allem Unterschiede im Zeitverlauf, weniger in der räumlichen Konzentration von Stationen mit ähnlichem Auslastungsverlauf. Dies deutet auf zwei unterschiedliche Zustände des Fahrradleihsystems hin, denen in weiteren detaillierten Analysen nachgegangen werden könnte, inbesondere bezüglich der potenziellen Wendepunkte Freitagabend und Montagmorgen.
 
 
 <!-- # Outlook
