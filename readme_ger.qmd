@@ -5,7 +5,7 @@ format:
   gfm:
     output-file: "README"
     output-ext: md
-execute: 
+execute:
   echo: false 
   warning: false
 ---
@@ -182,7 +182,7 @@ Mit etwa 500 Stationen ist Cluster Nr. 1 der größte und entspricht in etwa 30 
 
 Die mittlere Auslastung in Cluster 2 ist mit 60-70% über den Tag hinweg recht stabil. Die Stationen, die Cluster 2 zugeordnet sind, konzentrieren sich auf zwei Regionen von Paris: 1) Im östlichen Teil des inneren Ring (3., 4. und 5. Arrondissement) und 2) Im äußeren südwestlichen Teil, um und südlich des Eiffelturms, was auf eine höhere Nachfrage in Touristengebieten in Kombination mit der regulären Nachfrage von Einwohnern hindeuten könnte.
 
-Die verbleibenden Cluster 3, 4 und 5 zeigen antikorrelierte periodische Muster mit ausgeprägten Änderungen der Auslastung während der Pendelzeiten (6-9 Uhr und 16-18 Uhr). Stationen in den Arrondissements 6, 7 und 8 (Cluster 4) sind am Morgen kaum belegt und verzeichnen einen starken Anstieg der Auslastung, was auf einen Einstrom von Pendlers aus den Clustern 3 und 5 hindeutet.
+Die verbleibenden Cluster 3, 4 und 5 zeigen antikorrelierte periodische Muster mit ausgeprägten Änderungen der Auslastung während der Pendelzeiten (6-9 Uhr und 16-18 Uhr). Stationen in den Arrondissements 6, 7 und 8 (Cluster 4) sind am Morgen kaum belegt und verzeichnen einen starken Anstieg der Auslastung, was auf einen Einstrom von Pendler*innen aus den Clustern 3 und 5 hindeutet.
 
 Es muss beachtet werden, dass dieser Datensatz nur Rückschlüsse über Nettoflüsse analysiert werden können, d. h. der Flussweg kann aus diesen Daten nicht abgeleitet werden. Dies bedeutet, dass Abflüsse aus den Clustern 3 und 5 am Morgen direkt in Cluster 4 gehen könnten, während ein Flussgleichgewicht zwischen den Clustern 3, 5, 2 und 4 als Erklärung für das beobachtete Muster ebenfalls in Betracht kommt.
 
@@ -190,14 +190,12 @@ Selbst mit dieser Einschränkung können die beobachteten Flussmuster Aufschluss
 
 Stationen oder Cluster, die während des morgendlichen Berufsverkehrs einen signifikanten Rückgang der verfügbaren Fahrräder aufweisen, deuten auf ein hohes Volumen an Netto-Ausleihen hin, was typisch für Pendleraktivitäten ist. Stationen oder Cluster, die während der Abendstunden einen starken Anstieg der verfügbaren Fahrräder zeigen, deuten auf einen Netto-Einfluss von Fahrrädern hin (mehr Rückgaben als Ausleihen), potenziell von Benutzern, die Fahrräder nach der Arbeit oder Freizeit zurückgeben.
 
-Stationen mit einem konstantem Nettorückgang während der Spitzennutzung sollten für aktive Auffüllung in Betracht gezogen werden, während Fahrräder von Stationen abgezogen werden sollten, die sich nahe der vollen Auslastung befinden.
+In den hier diskutierten Szenarien sollten Stationen mit einem konstantem Nettorückgang während der Spitzennutzung für eine aktive Auffüllung in Betracht gezogen werden, während  von Stationen, die sich nahe der vollen Auslastung befinden, Fahrräder abgezogen werden sollten.
 
-
-## Netwerkdynamik am Wochenende
+## Netzwerkdynamik am Wochenende
 
 
 ```{python}
-
 # Load the saved data
 wcss_df = pd.read_csv('./analysis/paris/rel_avail_weekend/wcss_results.csv')
 cluster_profiles_df = pd.read_csv('./analysis/paris/rel_avail_weekend/cluster_profiles.csv', index_col=0)
@@ -260,15 +258,6 @@ ax4.set_xticklabels(range(24), fontsize=fontsize-2)
 ax4.set_yticklabels(ax4.get_yticklabels(), fontsize=fontsize-2, rotation=0)
 # Panel 5: Geographic Distribution of Clusters (Span 4x4)
 ax5 = plt.subplot(gs[4:8, :])  # Span rows 4, 5, 6 and 7, and both columns
-# sns.scatterplot(
-#     x='lon',
-#     y='lat',
-#     hue='cluster',
-#     palette=sns.color_palette("hls", n_clusters),
-#     data=stations_clusters_with_info_df,
-#     ax=ax5,
-#     s=20 # Adjust marker size
-# )
 gdf_webmercator = stations_clusters_with_info_df.to_crs(epsg=3857)
 # First, create a dictionary to map cluster numbers to colors
 cluster_colors = {i: color for i, color in enumerate(sns.color_palette("hls", n_colors=n_clusters))}
