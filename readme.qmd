@@ -85,7 +85,6 @@ stations_clusters_with_info_df = geopandas.GeoDataFrame(
 # stations_clusters_with_info_df.set_crs(2154)
 ```
 
-### Code
 
 ```{python}
 n_clusters = cluster_profiles_df.shape[0] # Get n_clusters from the loaded data
@@ -168,7 +167,6 @@ plt.tight_layout()  # Adjust layout to prevent overlapping subplots
 
 ```
 
-### Interpretation
 
 The number of clusters was identified using the elbow method, there is no clearcut results, but a choice of $k=5$ seems justified as it provided a meaningful distinction of temporal patterns and geographic concentrations that align with expected urban mobility behaviors, offering a coherent basis for analysis.
 
@@ -190,7 +188,6 @@ Stations with consistent net decrease during peak usage times are candidates for
 
 ## Network dynamics during weekends
 
-### Code
 
 ```{python}
 
@@ -288,7 +285,6 @@ plt.tight_layout()  # Adjust layout to prevent overlapping subplots
 
 ```
 
-### Interpretation
 
 The elbow plot for the weekend data indicates that an analysis using only two clusters might be warranted. However, in order to facilitate direct comparison to the weekday analysis, 5 clusters were retained. 
 
