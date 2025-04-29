@@ -1,6 +1,9 @@
-# Projektübersicht: Nutzungsmsuter im Pariser Velib System
+# Netzwerkdynamik an Wochentagen
 
-Dieses Projekt analysiert die Dynamik des Pariser Velib
+
+# Projektübersicht: Nutzungsmsuter im Pariser *Velib* System
+
+Dieses Projekt analysiert die Dynamik des Pariser *Velib*
 Bike-Sharing-Systems. Ich verwende Cluster-Analyse sowie räumliche und
 zeitliche Visualisierungen, um Muster im Fahrradfluss innerhalb des
 Netzwerks getrennt für Wochentage und Wochenenden aufzudecken. Beide
@@ -73,7 +76,7 @@ AWS Quicksight Dashboard, AWS Account erforderlich
 
 [![](./dashboard.png)](https://eu-central-1.quicksight.aws.amazon.com/sn/accounts/887794525971/dashboards/00415383-4ae1-440b-897c-0f054ed9df20?directory_alias=kantundpeterpan)
 
-# Results
+# Ergebnisse
 
 ![](readme_ger_files/figure-commonmark/cell-4-output-1.png)
 
@@ -108,8 +111,8 @@ Die verbleibenden Cluster 3, 4 und 5 zeigen antikorrelierte periodische
 Muster mit ausgeprägten Änderungen der Auslastung während der
 Pendelzeiten (6-9 Uhr und 16-18 Uhr). Stationen in den Arrondissements
 6, 7 und 8 (Cluster 4) sind am Morgen kaum belegt und verzeichnen einen
-starken Anstieg der Auslastung, was auf einen Einstrom von Pendlers aus
-den Clustern 3 und 5 hindeutet.
+starken Anstieg der Auslastung, was auf einen Einstrom von
+Pendler\*innen aus den Clustern 3 und 5 hindeutet.
 
 Es muss beachtet werden, dass dieser Datensatz nur Rückschlüsse über
 Nettoflüsse analysiert werden können, d. h. der Flussweg kann aus diesen
@@ -131,12 +134,12 @@ deuten auf einen Netto-Einfluss von Fahrrädern hin (mehr Rückgaben als
 Ausleihen), potenziell von Benutzern, die Fahrräder nach der Arbeit oder
 Freizeit zurückgeben.
 
-Stationen mit einem konstantem Nettorückgang während der Spitzennutzung
-sollten für aktive Auffüllung in Betracht gezogen werden, während
-Fahrräder von Stationen abgezogen werden sollten, die sich nahe der
-vollen Auslastung befinden.
+In den hier diskutierten Szenarien sollten Stationen mit einem
+konstantem Nettorückgang während der Spitzennutzung für eine aktive
+Auffüllung in Betracht gezogen werden, während von Stationen, die sich
+nahe der vollen Auslastung befinden, Fahrräder abgezogen werden sollten.
 
-## Netwerkdynamik am Wochenende
+## Netzwerkdynamik am Wochenende
 
 ![](readme_ger_files/figure-commonmark/cell-6-output-1.png)
 
@@ -186,11 +189,11 @@ Infrastrukturverbesserungen (mehr Station in oder alternative
 Rückgabelösungen in Cluster 4) dienen.
 
 Der Vergleich der Auslastungsmuster aufgeschlüsselt nach Werktag /
-Wochendende zeigt vor allem Unterschiede im Zeitverlauf weniger in der
+Wochendende zeigt vor allem Unterschiede im Zeitverlauf, weniger in der
 räumlichen Konzentration von Stationen mit ähnlichem Auslastungsverlauf.
 Dies deutet auf zwei unterschiedliche Zustände des Fahrradleihsystems
 hin, denen in weiteren detaillierten Analysen nachgegangen werden
-könnte, inbesondere bezüglich der potenziellen WendepunkteÖ Freitagabend
+könnte, inbesondere bezüglich der potenziellen Wendepunkte Freitagabend
 und Montagmorgen.
 
 <!-- # Outlook
